@@ -1,0 +1,465 @@
+{
+  "title": "Endeavor Health Provider Forms Analysis",
+  "description": "Comparative analysis of three provider information forms in use at Endeavor Health",
+  "forms": [
+    {
+      "name": "Endeavor Health Website Form",
+      "shortName": "Website",
+      "purpose": "Public-facing provider profiles",
+      "sections": 5,
+      "totalFields": 23
+    },
+    {
+      "name": "Provider Search Form Based on Salesforce",
+      "shortName": "Salesforce",
+      "purpose": "Provider database and search functionality",
+      "sections": "Not explicitly sectioned",
+      "totalFields": 29
+    },
+    {
+      "name": "Pulse Based Form",
+      "shortName": "Pulse",
+      "purpose": "Internal referral system",
+      "sections": "Not explicitly sectioned",
+      "totalFields": 16
+    }
+  ],
+  "fieldCategories": [
+    {
+      "category": "Basic Identification",
+      "fields": [
+        {
+          "fieldName": "Provider NPI Number",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Salesforce uses Contact ID instead of NPI"
+        },
+        {
+          "fieldName": "First Name",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "Present in all forms"
+        },
+        {
+          "fieldName": "Last Name",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "Present in all forms"
+        },
+        {
+          "fieldName": "Account Name",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Medical group/institution name, only in Salesforce"
+        }
+      ]
+    },
+    {
+      "category": "Professional Information",
+      "fields": [
+        {
+          "fieldName": "Credentials",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Website has extensive credential list; Pulse has simpler list; Salesforce uses Title instead"
+        },
+        {
+          "fieldName": "Professional Title",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Called 'Title' in Salesforce"
+        },
+        {
+          "fieldName": "License",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Years of Experience",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Called 'Years in Practice' in Salesforce"
+        },
+        {
+          "fieldName": "Hospital Affiliation",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Awards and Honors",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        }
+      ]
+    },
+    {
+      "category": "Demographic Information",
+      "fields": [
+        {
+          "fieldName": "Gender",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "All forms have this, but with different options"
+        },
+        {
+          "fieldName": "Pronouns",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Cultural Identity",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Languages",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Both Website and Salesforce have comprehensive language lists"
+        }
+      ]
+    },
+    {
+      "category": "Education & Training",
+      "fields": [
+        {
+          "fieldName": "Medical School Education",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Education (for Therapists)",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Residency",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Fellowship",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Board Certifications",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Research Focus",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        }
+      ]
+    },
+    {
+      "category": "Clinical Services",
+      "fields": [
+        {
+          "fieldName": "Web Specialty/Label",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Website: 'Web Specialty', Pulse: 'Label'"
+        },
+        {
+          "fieldName": "Ages Seen/Treated",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "All forms have this, but with different age brackets and formats"
+        },
+        {
+          "fieldName": "Clinical Focus/Specialties",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "All have this, but with different terminology and options"
+        },
+        {
+          "fieldName": "Treatment Modalities/Approach",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "All have this with varying levels of detail"
+        },
+        {
+          "fieldName": "Provider Level of Treatment",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "In-Person/Telehealth",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Do NOT Refer",
+          "inWebsite": false,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Unique to Pulse form"
+        },
+        {
+          "fieldName": "Insurance Panels/Restrictions",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "Present in both Salesforce and Pulse"
+        }
+      ]
+    },
+    {
+      "category": "Availability & Practice Information",
+      "fields": [
+        {
+          "fieldName": "Availability",
+          "inWebsite": false,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Only in Pulse"
+        },
+        {
+          "fieldName": "Soonest Availability",
+          "inWebsite": false,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Only in Pulse"
+        },
+        {
+          "fieldName": "Evening Hours",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Weekend Hours",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Location",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "Different formats across forms"
+        }
+      ]
+    },
+    {
+      "category": "Contact Information",
+      "fields": [
+        {
+          "fieldName": "Phone Number",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": true,
+          "notes": "Present in all forms"
+        },
+        {
+          "fieldName": "Mobile Phone",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Fax",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Email Address",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Present in Website and Salesforce"
+        },
+        {
+          "fieldName": "Office/Mailing Address",
+          "inWebsite": true,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Present in Website and Salesforce with different formats"
+        }
+      ]
+    },
+    {
+      "category": "Media & Personal Content",
+      "fields": [
+        {
+          "fieldName": "Headshot",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Video",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Bio",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Philosophy of Care",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "My Endeavor Statement",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        },
+        {
+          "fieldName": "Personal Interests",
+          "inWebsite": true,
+          "inSalesforce": false,
+          "inPulse": false,
+          "notes": "Only in Website form"
+        }
+      ]
+    },
+    {
+      "category": "Referral & Evaluation Information",
+      "fields": [
+        {
+          "fieldName": "Eval Info",
+          "inWebsite": false,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Only in Pulse"
+        },
+        {
+          "fieldName": "Other Considerations",
+          "inWebsite": false,
+          "inSalesforce": false,
+          "inPulse": true,
+          "notes": "Only in Pulse"
+        }
+      ]
+    },
+    {
+      "category": "Administrative",
+      "fields": [
+        {
+          "fieldName": "Provider Finder Audit Date",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Only in Salesforce"
+        },
+        {
+          "fieldName": "Account Owner",
+          "inWebsite": false,
+          "inSalesforce": true,
+          "inPulse": false,
+          "notes": "Hidden field in Salesforce"
+        }
+      ]
+    }
+  ],
+  "fieldTypeAnalysis": {
+    "textFields": 32,
+    "selectFields": 20,
+    "multiselectFields": 12,
+    "dateFields": 3,
+    "fileUploadFields": 2,
+    "numericFields": 5,
+    "binaryFields": 2
+  },
+  "gaps": [
+    {
+      "form": "Website",
+      "missingFields": [
+        "Insurance information",
+        "Cultural identity",
+        "Availability information",
+        "Service delivery mode (telehealth/in-person)"
+      ]
+    },
+    {
+      "form": "Salesforce",
+      "missingFields": [
+        "Rich media (headshot, video)",
+        "Biographical information",
+        "Educational background",
+        "Philosophy of care",
+        "Personal interests",
+        "Do NOT Refer criteria"
+      ]
+    },
+    {
+      "form": "Pulse",
+      "missingFields": [
+        "Detailed contact information",
+        "Educational background",
+        "Biographical information",
+        "Provider identification numbers",
+        "Media content",
+        "Languages spoken"
+      ]
+    }
+  ],
+  "recommendations": [
+    "Standardize field naming conventions across all forms",
+    "Align age brackets and specialty lists for consistent referrals",
+    "Merge unique strengths from each form into a consolidated system",
+    "Add missing critical fields to appropriate forms",
+    "Create a tiered data model with core fields required for all purposes",
+    "Implement conditional fields based on provider type/role"
+  ]
+} 
