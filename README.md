@@ -1,75 +1,110 @@
-# Provider Forms Analysis Visualization
+# Provider Forms Analysis & Integration Tool
 
-A visualization tool for comparing three provider information forms in use at Endeavor Health.
+This project provides a comprehensive analysis and integration solution for harmonizing three provider information forms (Website, Salesforce, and Pulse) into a unified Salesforce-based system for Endeavor Health.
 
 ## Overview
 
-This project provides a visualization of the comparative analysis between:
-- Endeavor Health Website Form
-- Provider Search Form Based on Salesforce
-- Pulse Based Form
+The analysis tool visualizes the relationships between different provider forms and provides a structured approach to combining them into a single, comprehensive system. The project includes:
 
-The visualization highlights field overlap, unique fields, and recommendations for form consolidation.
-
-## Data Structure
-
-The data for the visualization is stored in two main files:
-- `src/provider-form-analysis.json`: Contains the structured data for the analysis
-- `src/provider-form-visualization.tsx`: React component to render the interactive visualization
-
-## Features
-
-The visualization includes three main tabs:
-1. **Overview**: Summary of all forms and high-level statistics
-2. **Fields**: Detailed breakdown of fields by category
-3. **Gaps**: Analysis of missing information across the forms
-
-## Setup
-
-1. Run the setup script to ensure proper file structure:
-```
-node setup.js
-```
-
-2. Install dependencies:
-```
-npm install
-```
-
-3. Start the development server:
-```
-npm start
-```
-
-4. Build for production:
-```
-npm run build
-```
+1. Data visualization of the existing forms
+2. Comprehensive analysis of field mappings
+3. Interactive form prototype with conditional logic
+4. Implementation specifications and examples
 
 ## Project Structure
 
 ```
-├── public/
-│   └── index.html             # Main HTML file
-├── src/
-│   ├── App.tsx                # Main App component
-│   ├── index.tsx              # Entry point
-│   ├── provider-form-analysis.json  # Form analysis data
-│   ├── provider-form-visualization.tsx  # Visualization component
-│   └── react-app-env.d.ts     # TypeScript declaration file
-├── package.json               # Dependencies and scripts
-├── README.md                  # This file
-├── setup.js                   # Setup script
-└── tsconfig.json              # TypeScript configuration
+providers-analysis/
+├── README.md                               # Project documentation
+├── package.json                            # Project dependencies
+├── tsconfig.json                           # TypeScript configuration
+├── setup.js                                # Setup script
+├── public/                                 # Public assets
+├── src/                                    # Source code
+│   ├── App.tsx                             # Main application component
+│   ├── index.tsx                           # Application entry point
+│   ├── provider-form-analysis.json         # Analysis data for visualization
+│   ├── provider-form-visualization.tsx     # Data visualization component
+│   ├── react-app-env.d.ts                  # React TypeScript definitions
+│   ├── form-visualization/                 # Form prototype and visualization tools
+│   │   ├── index.html                      # Interactive form prototype
+│   │   ├── styles.css                      # Styling for prototype
+│   │   ├── script.js                       # Prototype functionality
+│   │   ├── form-data-schema.json           # JSON schema for form data
+│   │   └── salesforce-config-example.xml   # Example Salesforce config
+│   └── form-implementation/                # Implementation code
+│       └── conditional-logic.js            # Form conditional logic implementation
+└── comprehensive-analysis/                 # Comprehensive analysis documents
+    ├── provider-form-comprehensive-analysis.md   # Complete field inventory
+    ├── provider-form-diagram.md                  # Form structure visualization
+    ├── specialty-standardization.md              # Specialty list standardization
+    ├── internal-external-provider-logic.md       # Provider type conditional logic
+    └── comprehensive-form-analysis.md            # Initial analysis
 ```
 
-## Requirements
+## Setup and Usage
 
-- Node.js 14+
-- npm or yarn
+1. **Install dependencies:**
+   ```
+   npm install
+   ```
 
-## Technology Stack
+2. **Run the setup script:**
+   ```
+   node setup.js
+   ```
 
-- React
-- TypeScript
-- CSS-in-JS (inline styles) 
+3. **Start the development server:**
+   ```
+   npm start
+   ```
+
+4. **Access the visualization tools:**
+   - Form Analysis Dashboard: http://localhost:3000
+   - Interactive Form Prototype: http://localhost:3000/form-visualization
+
+## Form Analysis Features
+
+The provider form analysis includes:
+
+1. **Field Mapping**: Comprehensive mapping between all three forms (Website, Salesforce, Pulse)
+2. **Gap Analysis**: Identification of fields missing from each form
+3. **Data Type Specifications**: Field types, validation rules, and requirements
+4. **Conditional Logic**: Rules for showing/hiding fields based on provider type
+5. **Standardization**: Standardized specialty lists, age ranges, and other pickfields
+
+## Interactive Form Prototype
+
+The form prototype demonstrates:
+
+1. **Conditional Field Display**: Fields appear/disappear based on provider type
+2. **Validation Rules**: Required fields based on provider status
+3. **Section Organization**: Logical grouping of related fields
+4. **Field Dependencies**: Fields that depend on values in other fields
+
+## Implementation Resources
+
+The project includes implementation resources for developers:
+
+1. **JSON Schema**: Structured data definition for the form
+2. **Salesforce XML**: Example Salesforce object configuration
+3. **Conditional Logic Code**: JavaScript implementation of form logic
+4. **Mermaid Diagrams**: Visual representations of form flow and field relationships
+
+## Technical Notes
+
+- Built with React and TypeScript
+- Uses Mermaid.js for flow diagrams
+- JSON Schema for data validation
+- Responsive design for all screen sizes
+
+## Next Steps
+
+1. Implement the consolidated form in Salesforce
+2. Create data migration scripts for existing provider data
+3. Develop the integration between Salesforce and the website
+4. Set up automated testing for form validation rules
+
+## License
+
+Copyright © 2023 Endeavor Health 

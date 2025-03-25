@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <label>Provider</label>
+    <nameField>
+        <label>Provider Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Providers</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+    
+    <!-- Basic Provider Status Fields -->
+    <fields>
+        <fullName>ProviderStatus__c</fullName>
+        <externalId>false</externalId>
+        <label>Provider Status</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Internal Endeavor Health Provider</fullName>
+                    <default>false</default>
+                    <label>Internal Endeavor Health Provider</label>
+                </value>
+                <value>
+                    <fullName>External Affiliated Provider</fullName>
+                    <default>false</default>
+                    <label>External Affiliated Provider</label>
+                </value>
+                <value>
+                    <fullName>External Non-Affiliated Provider</fullName>
+                    <default>false</default>
+                    <label>External Non-Affiliated Provider</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <fields>
+        <fullName>ShowOnWebsite__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Show on Endeavor Website</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    
+    <fields>
+        <fullName>EmploymentType__c</fullName>
+        <externalId>false</externalId>
+        <label>Employment Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Full-time Employee</fullName>
+                    <default>false</default>
+                    <label>Full-time Employee</label>
+                </value>
+                <value>
+                    <fullName>Part-time Employee</fullName>
+                    <default>false</default>
+                    <label>Part-time Employee</label>
+                </value>
+                <value>
+                    <fullName>Contractor</fullName>
+                    <default>false</default>
+                    <label>Contractor</label>
+                </value>
+                <value>
+                    <fullName>Affiliated Independent Practice</fullName>
+                    <default>false</default>
+                    <label>Affiliated Independent Practice</label>
+                </value>
+                <value>
+                    <fullName>Medical Staff</fullName>
+                    <default>false</default>
+                    <label>Medical Staff</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Basic Identification Fields -->
+    <fields>
+        <fullName>FirstName__c</fullName>
+        <externalId>false</externalId>
+        <label>First Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <fields>
+        <fullName>LastName__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <fields>
+        <fullName>NPI__c</fullName>
+        <externalId>true</externalId>
+        <label>Provider NPI Number</label>
+        <length>10</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    
+    <fields>
+        <fullName>Credentials__c</fullName>
+        <externalId>false</externalId>
+        <label>Credentials</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>ABPP-CN</fullName>
+                    <default>false</default>
+                    <label>ABPP-CN</label>
+                </value>
+                <value>
+                    <fullName>AGNP</fullName>
+                    <default>false</default>
+                    <label>AGNP</label>
+                </value>
+                <!-- More credential options would be added here -->
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    
+    <fields>
+        <fullName>AccountName__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Name</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Professional Information Fields -->
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Psychiatrist</fullName>
+                    <default>false</default>
+                    <label>Psychiatrist</label>
+                </value>
+                <value>
+                    <fullName>Psychologist</fullName>
+                    <default>false</default>
+                    <label>Psychologist</label>
+                </value>
+                <value>
+                    <fullName>Therapist</fullName>
+                    <default>false</default>
+                    <label>Therapist</label>
+                </value>
+                <value>
+                    <fullName>Physician</fullName>
+                    <default>false</default>
+                    <label>Physician</label>
+                </value>
+                <value>
+                    <fullName>Nurse Practitioner</fullName>
+                    <default>false</default>
+                    <label>Nurse Practitioner</label>
+                </value>
+                <value>
+                    <fullName>Physician Assistant</fullName>
+                    <default>false</default>
+                    <label>Physician Assistant</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Education Fields Example -->
+    <fields>
+        <fullName>MedicalSchool__c</fullName>
+        <externalId>false</externalId>
+        <label>Medical School</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <fields>
+        <fullName>MedicalSchoolYear__c</fullName>
+        <externalId>false</externalId>
+        <label>Medical School Year</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    
+    <!-- Demographics Fields Example -->
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Male</fullName>
+                    <default>false</default>
+                    <label>Male</label>
+                </value>
+                <value>
+                    <fullName>Female</fullName>
+                    <default>false</default>
+                    <label>Female</label>
+                </value>
+                <value>
+                    <fullName>Non-binary</fullName>
+                    <default>false</default>
+                    <label>Non-binary</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+                <value>
+                    <fullName>Prefer not to say</fullName>
+                    <default>false</default>
+                    <label>Prefer not to say</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Media Content Fields Example -->
+    <fields>
+        <fullName>Headshot__c</fullName>
+        <externalId>false</externalId>
+        <label>Headshot</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    
+    <fields>
+        <fullName>Bio__c</fullName>
+        <externalId>false</externalId>
+        <label>Bio</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    
+    <!-- Clinical Services Fields Example -->
+    <fields>
+        <fullName>WebSpecialty__c</fullName>
+        <externalId>false</externalId>
+        <label>Web Specialty</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Therapy/Counseling</fullName>
+                    <default>false</default>
+                    <label>Therapy/Counseling</label>
+                </value>
+                <value>
+                    <fullName>Psychiatry/Medication Management</fullName>
+                    <default>false</default>
+                    <label>Psychiatry/Medication Management</label>
+                </value>
+                <value>
+                    <fullName>Neuropsychology/Psychological Testing</fullName>
+                    <default>false</default>
+                    <label>Neuropsychology/Psychological Testing</label>
+                </value>
+                <value>
+                    <fullName>Behavioral Health Integration</fullName>
+                    <default>false</default>
+                    <label>Behavioral Health Integration</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    
+    <!-- Validation Rules -->
+    <validationRules>
+        <fullName>RequireHeadshotForWebsite</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+            ISPICKVAL(ProviderStatus__c, "Internal Endeavor Health Provider"),
+            ShowOnWebsite__c,
+            ISBLANK(Headshot__c)
+        )</errorConditionFormula>
+        <errorMessage>Headshot is required for internal providers displayed on the website.</errorMessage>
+    </validationRules>
+    
+    <validationRules>
+        <fullName>RequireMedicalSchoolForPsychiatrists</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+            ISPICKVAL(ProviderStatus__c, "Internal Endeavor Health Provider"),
+            OR(
+                ISPICKVAL(Title__c, "Psychiatrist"),
+                ISPICKVAL(Title__c, "Physician")
+            ),
+            ISBLANK(MedicalSchool__c)
+        )</errorConditionFormula>
+        <errorMessage>Medical School is required for Psychiatrists and Physicians.</errorMessage>
+    </validationRules>
+    
+    <!-- Page Layouts -->
+    <layouts>
+        <fullName>Provider_Layout</fullName>
+        <layoutSections>
+            <customLabel>true</customLabel>
+            <detailHeading>true</detailHeading>
+            <editHeading>true</editHeading>
+            <label>Provider Status</label>
+            <layoutColumns>
+                <layoutItems>
+                    <behavior>Required</behavior>
+                    <field>ProviderStatus__c</field>
+                </layoutItems>
+                <layoutItems>
+                    <behavior>Edit</behavior>
+                    <field>ShowOnWebsite__c</field>
+                </layoutItems>
+            </layoutColumns>
+            <layoutColumns>
+                <layoutItems>
+                    <behavior>Edit</behavior>
+                    <field>EmploymentType__c</field>
+                </layoutItems>
+            </layoutColumns>
+            <style>TwoColumnsLeftToRight</style>
+        </layoutSections>
+        <layoutSections>
+            <customLabel>true</customLabel>
+            <detailHeading>true</detailHeading>
+            <editHeading>true</editHeading>
+            <label>Basic Identification</label>
+            <layoutColumns>
+                <layoutItems>
+                    <behavior>Required</behavior>
+                    <field>FirstName__c</field>
+                </layoutItems>
+                <layoutItems>
+                    <behavior>Required</behavior>
+                    <field>LastName__c</field>
+                </layoutItems>
+                <layoutItems>
+                    <behavior>Required</behavior>
+                    <field>NPI__c</field>
+                </layoutItems>
+            </layoutColumns>
+            <layoutColumns>
+                <layoutItems>
+                    <behavior>Required</behavior>
+                    <field>Credentials__c</field>
+                </layoutItems>
+                <layoutItems>
+                    <behavior>Required</behavior>
+                    <field>AccountName__c</field>
+                </layoutItems>
+            </layoutColumns>
+            <style>TwoColumnsLeftToRight</style>
+        </layoutSections>
+        <!-- Additional layout sections would be added here -->
+    </layouts>
+    
+    <!-- Record Types -->
+    <recordTypes>
+        <fullName>InternalProvider</fullName>
+        <active>true</active>
+        <label>Internal Provider</label>
+        <picklistValues>
+            <picklist>ProviderStatus__c</picklist>
+            <values>
+                <fullName>Internal Endeavor Health Provider</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <!-- Additional picklist values would be configured here -->
+    </recordTypes>
+    
+    <recordTypes>
+        <fullName>ExternalProvider</fullName>
+        <active>true</active>
+        <label>External Provider</label>
+        <picklistValues>
+            <picklist>ProviderStatus__c</picklist>
+            <values>
+                <fullName>External Affiliated Provider</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>External Non-Affiliated Provider</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <!-- Additional picklist values would be configured here -->
+    </recordTypes>
+</CustomObject> 

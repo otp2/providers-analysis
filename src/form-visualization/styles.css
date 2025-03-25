@@ -1,0 +1,307 @@
+/* Provider Form Visualization Styles */
+
+:root {
+    --primary-color: #0066cc;
+    --secondary-color: #4b9cd3;
+    --accent-color: #ffbb00;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --gray-color: #6c757d;
+    --border-color: #dee2e6;
+    
+    --internal-highlight: #e6f7ff;
+    --external-highlight: #f8f9fa;
+    --website-highlight: #fff8e6;
+    
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--dark-color);
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--primary-color);
+}
+
+/* Main Content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    padding-top: 1rem;
+}
+
+section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Prototype Styles */
+.form-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field input[type="email"],
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-family);
+}
+
+.form-field select[multiple] {
+    height: 120px;
+}
+
+.form-field textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-field .hint {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gray-color);
+    margin-top: 0.25rem;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+#prev-section {
+    background-color: var(--gray-color);
+}
+
+#prev-section:hover {
+    background-color: #5a6268;
+}
+
+/* Highlighting for different field types */
+.provider-internal-only {
+    background-color: var(--internal-highlight);
+    border-left: 3px solid var(--primary-color);
+}
+
+.website-display-field {
+    background-color: var(--website-highlight);
+    border-left: 3px solid var(--accent-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Mermaid Diagram Styles */
+.mermaid-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+/* Tabs for Conditional Logic */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.tab-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: var(--light-color);
+}
+
+.tab-button.active {
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: bold;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Field Inventory Table */
+.field-filter {
+    margin-bottom: 1.5rem;
+}
+
+.field-filter select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.field-table-container {
+    overflow-x: auto;
+}
+
+#field-inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+#field-inventory-table th,
+#field-inventory-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+#field-inventory-table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#field-inventory-table tbody tr:nth-child(even) {
+    background-color: var(--light-color);
+}
+
+#field-inventory-table tbody tr:hover {
+    background-color: var(--internal-highlight);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    button {
+        width: 100%;
+    }
+} 

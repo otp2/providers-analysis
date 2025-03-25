@@ -1,0 +1,463 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Provider Form Schema",
+  "description": "Schema for the unified Endeavor Health provider form data",
+  "type": "object",
+  "properties": {
+    "providerStatus": {
+      "type": "string",
+      "description": "Provider's status within Endeavor Health",
+      "enum": ["internal", "external-affiliated", "external-non-affiliated"]
+    },
+    "showOnWebsite": {
+      "type": "boolean",
+      "description": "Whether to display this provider on the Endeavor website"
+    },
+    "employmentType": {
+      "type": "string",
+      "description": "Type of employment relationship (internal providers only)",
+      "enum": ["full-time", "part-time", "contractor", "affiliated", "medical-staff"]
+    },
+    "basicIdentification": {
+      "type": "object",
+      "description": "Core provider identity information",
+      "required": ["firstName", "lastName", "npi", "credentials", "accountName"],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "description": "Provider's first name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Provider's last name"
+        },
+        "npi": {
+          "type": "string",
+          "description": "National Provider Identifier (10 digits)",
+          "pattern": "^\\d{10}$"
+        },
+        "credentials": {
+          "type": "array",
+          "description": "Professional credentials",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ABPP-CN", "AGNP", "APN", "APN-CNP", "APP", "APRN", "ATR", "CACGS", 
+              "CADC", "CCM", "DNP", "DO", "FNP-BC", "LCPC", "LCSW", "LPC", 
+              "LSCW", "LSW", "MA", "MBA", "MD", "MS", "NP-BC", "PA", 
+              "PA-C", "PhD", "PMHNP", "PMHNP-BC", "PsyD"
+            ]
+          }
+        },
+        "accountName": {
+          "type": "string",
+          "description": "Medical group or institution name"
+        },
+        "salesforceContactId": {
+          "type": "string",
+          "description": "Salesforce system identifier"
+        }
+      }
+    },
+    "professionalInformation": {
+      "type": "object",
+      "description": "Professional qualifications and achievements",
+      "required": ["title", "license", "yearsInPractice"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Professional title/role",
+          "enum": ["psychiatrist", "psychologist", "therapist", "physician", "nurse-practitioner", "physician-assistant"]
+        },
+        "license": {
+          "type": "string",
+          "description": "State license number"
+        },
+        "yearsInPractice": {
+          "type": "string",
+          "description": "Years of professional experience",
+          "enum": ["under-5", "5-10", "10-15", "15-20", "over-20"]
+        },
+        "professionalTitles": {
+          "type": "string",
+          "description": "Additional professional titles (internal only)"
+        },
+        "hospitalAffiliation": {
+          "type": "array",
+          "description": "Hospital affiliations (internal only)",
+          "items": {
+            "type": "string",
+            "enum": [
+              "linden-oaks", "swedish", "evanston", "glenbrook", "skokie", "nwch"
+            ]
+          }
+        },
+        "awardsHonors": {
+          "type": "string",
+          "description": "Recognition and awards (internal only)"
+        }
+      }
+    },
+    "educationTraining": {
+      "type": "object",
+      "description": "Academic and training credentials (internal only)",
+      "properties": {
+        "medicalSchool": {
+          "type": "string",
+          "description": "Medical school name (for psychiatrists/physicians)"
+        },
+        "medicalSchoolYear": {
+          "type": "integer",
+          "description": "Medical school graduation year",
+          "minimum": 1950,
+          "maximum": 2023
+        },
+        "therapistEducation": {
+          "type": "string",
+          "description": "Education institution (for therapists/psychologists)"
+        },
+        "educationYear": {
+          "type": "integer",
+          "description": "Graduation year for therapists/psychologists",
+          "minimum": 1950,
+          "maximum": 2023
+        },
+        "residency": {
+          "type": "string",
+          "description": "Residency program (medical providers)"
+        },
+        "residencyYear": {
+          "type": "integer",
+          "description": "Residency completion year",
+          "minimum": 1950,
+          "maximum": 2023
+        },
+        "fellowship": {
+          "type": "string",
+          "description": "Fellowship program (if applicable)"
+        },
+        "fellowshipYear": {
+          "type": "integer",
+          "description": "Fellowship completion year",
+          "minimum": 1950,
+          "maximum": 2023
+        },
+        "boardCertifications": {
+          "type": "array",
+          "description": "Board certifications",
+          "items": {
+            "type": "string"
+          }
+        },
+        "researchFocus": {
+          "type": "string",
+          "description": "Areas of research interest"
+        }
+      }
+    },
+    "demographicInformation": {
+      "type": "object",
+      "description": "Provider demographic information",
+      "required": ["gender", "languages"],
+      "properties": {
+        "gender": {
+          "type": "string",
+          "description": "Gender identity",
+          "enum": ["male", "female", "non-binary", "other", "prefer-not-to-say"]
+        },
+        "pronouns": {
+          "type": "array",
+          "description": "Preferred pronouns",
+          "items": {
+            "type": "string",
+            "enum": ["he-him-his", "she-her-hers", "they-them-theirs", "other"]
+          }
+        },
+        "culturalIdentity": {
+          "type": "array",
+          "description": "Cultural/ethnic identity",
+          "items": {
+            "type": "string",
+            "enum": [
+              "asian", "white", "black-african-american", "hispanic-latino",
+              "native-american", "pacific-islander", "middle-eastern", 
+              "other", "prefer-not-to-say"
+            ]
+          }
+        },
+        "languages": {
+          "type": "array",
+          "description": "Languages spoken",
+          "items": {
+            "type": "string",
+            "enum": [
+              "english", "spanish", "mandarin", "cantonese", "french", "arabic",
+              "russian", "hindi", "bengali", "portuguese", "japanese", "german",
+              "korean", "vietnamese", "tagalog", "italian", "polish", "ukrainian",
+              "greek", "sign-language"
+            ]
+          }
+        }
+      }
+    },
+    "clinicalServices": {
+      "type": "object",
+      "description": "Clinical capabilities and specialties",
+      "required": ["webSpecialty", "agesSeen", "clinicalFocus", "specialties", "treatmentModalities", "providerLevelTreatment", "insurancePanels"],
+      "properties": {
+        "webSpecialty": {
+          "type": "string",
+          "description": "Primary service category",
+          "enum": [
+            "psychiatry-medication", "therapy-counseling", "neuropsychology-testing",
+            "behavioral-health-integration", "medication-management-only", "dual-diagnosis"
+          ]
+        },
+        "agesSeen": {
+          "type": "array",
+          "description": "Age ranges treated",
+          "items": {
+            "type": "string",
+            "enum": ["0-5", "6-11", "12-17", "18-25", "26-40", "41-64", "65-plus"]
+          }
+        },
+        "clinicalFocus": {
+          "type": "array",
+          "description": "High-level clinical focus areas",
+          "items": {
+            "type": "string",
+            "enum": [
+              "general-mental-health", "anxiety-ocd", "eating-disorders", 
+              "ptsd-trauma", "addictions-dual-diagnosis", "neuropsychology-testing"
+            ]
+          }
+        },
+        "specialties": {
+          "type": "array",
+          "description": "Detailed clinical specialties",
+          "items": {
+            "type": "string"
+          }
+        },
+        "treatmentModalities": {
+          "type": "array",
+          "description": "Treatment approaches used",
+          "items": {
+            "type": "string"
+          }
+        },
+        "providerLevelTreatment": {
+          "type": "array",
+          "description": "Treatment settings/levels offered",
+          "items": {
+            "type": "string",
+            "enum": [
+              "outpatient-therapy", "outpatient-psychiatry", "iop", "php",
+              "inpatient", "residential", "detox", "couple-counseling",
+              "family-therapy", "support-groups", "psych-testing", "neuropsych-testing"
+            ]
+          }
+        },
+        "doNotRefer": {
+          "type": "array",
+          "description": "Conditions provider does not treat",
+          "items": {
+            "type": "string"
+          }
+        },
+        "insurancePanels": {
+          "type": "array",
+          "description": "Insurance plans accepted",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "availabilityPractice": {
+      "type": "object",
+      "description": "Availability and practice information",
+      "required": ["eveningHours", "weekendHours", "availabilityStatus", "serviceDeliveryMode", "location"],
+      "properties": {
+        "eveningHours": {
+          "type": "boolean",
+          "description": "Offers evening appointments (after 5pm)"
+        },
+        "weekendHours": {
+          "type": "boolean",
+          "description": "Offers weekend appointments"
+        },
+        "availabilityStatus": {
+          "type": "string",
+          "description": "Current availability status",
+          "enum": ["open", "limited", "closed"]
+        },
+        "soonestAvailability": {
+          "type": "string",
+          "description": "Timeframe for next available appointment"
+        },
+        "serviceDeliveryMode": {
+          "type": "string",
+          "description": "Service delivery method",
+          "enum": ["in-person-only", "telehealth-only", "in-person-and-telehealth"]
+        },
+        "location": {
+          "type": "array",
+          "description": "Practice locations",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contactInformation": {
+      "type": "object",
+      "description": "Provider contact details",
+      "required": ["phoneNumber", "emailAddress", "mailingStreet", "mailingCity", "mailingState", "mailingZip", "mailingCountry", "buildingName"],
+      "properties": {
+        "phoneNumber": {
+          "type": "string",
+          "description": "Office phone number",
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+        },
+        "mobilePhone": {
+          "type": "string",
+          "description": "Mobile phone (internal only)",
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+        },
+        "fax": {
+          "type": "string",
+          "description": "Office fax number",
+          "pattern": "^\\d{3}-\\d{3}-\\d{4}$"
+        },
+        "emailAddress": {
+          "type": "string",
+          "description": "Email address",
+          "format": "email"
+        },
+        "mailingStreet": {
+          "type": "string",
+          "description": "Street address"
+        },
+        "mailingCity": {
+          "type": "string",
+          "description": "City"
+        },
+        "mailingState": {
+          "type": "string",
+          "description": "State/province",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "mailingZip": {
+          "type": "string",
+          "description": "Postal code",
+          "pattern": "^\\d{5}(-\\d{4})?$"
+        },
+        "mailingCountry": {
+          "type": "string",
+          "description": "Country",
+          "default": "USA"
+        },
+        "buildingName": {
+          "type": "string",
+          "description": "Endeavor building name"
+        }
+      }
+    },
+    "mediaPersonalContent": {
+      "type": "object",
+      "description": "Media and personal content for website (internal only)",
+      "properties": {
+        "headshot": {
+          "type": "string",
+          "description": "File path or URL to headshot image"
+        },
+        "video": {
+          "type": "string",
+          "description": "URL to provider introduction video",
+          "format": "uri"
+        },
+        "bio": {
+          "type": "string",
+          "description": "Professional biography"
+        },
+        "philosophyOfCare": {
+          "type": "string",
+          "description": "Treatment philosophy"
+        },
+        "endeavorStatement": {
+          "type": "string",
+          "description": "\"My endeavor is to...\" statement"
+        },
+        "personalInterests": {
+          "type": "string",
+          "description": "Outside interests and hobbies"
+        }
+      }
+    },
+    "administrativeReferral": {
+      "type": "object",
+      "description": "Administrative and referral information",
+      "properties": {
+        "providerFinderAuditDate": {
+          "type": "string",
+          "description": "Last update timestamp",
+          "format": "date-time"
+        },
+        "accountOwner": {
+          "type": "string",
+          "description": "Salesforce administrator name"
+        },
+        "evalInfo": {
+          "type": "string",
+          "description": "Evaluation process details"
+        },
+        "otherConsiderations": {
+          "type": "string",
+          "description": "Additional notes for referrals"
+        }
+      }
+    }
+  },
+  "required": [
+    "providerStatus", 
+    "basicIdentification", 
+    "professionalInformation", 
+    "demographicInformation", 
+    "clinicalServices", 
+    "availabilityPractice", 
+    "contactInformation"
+  ],
+  "dependencies": {
+    "providerStatus": {
+      "oneOf": [
+        {
+          "properties": {
+            "providerStatus": { "enum": ["internal"] }
+          },
+          "required": ["showOnWebsite", "employmentType"]
+        },
+        {
+          "properties": {
+            "providerStatus": { "enum": ["external-affiliated", "external-non-affiliated"] }
+          }
+        }
+      ]
+    },
+    "showOnWebsite": {
+      "oneOf": [
+        {
+          "properties": {
+            "showOnWebsite": { "enum": [true] }
+          },
+          "required": ["mediaPersonalContent"]
+        },
+        {
+          "properties": {
+            "showOnWebsite": { "enum": [false] }
+          }
+        }
+      ]
+    }
+  }
+} 

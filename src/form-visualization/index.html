@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Form Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Endeavor Health Provider Form</h1>
+        <p>Interactive Visualization & Planning Tool</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#form-prototype">Form Prototype</a></li>
+            <li><a href="#flow-diagram">Flow Diagram</a></li>
+            <li><a href="#field-inventory">Field Inventory</a></li>
+            <li><a href="#conditional-logic">Conditional Logic</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="form-prototype">
+            <h2>Interactive Form Prototype</h2>
+            <p>This prototype demonstrates the conditional logic and field dependencies.</p>
+            
+            <div class="form-container">
+                <form id="provider-form">
+                    <!-- Provider Type Selection -->
+                    <div class="form-section" id="provider-type-section">
+                        <h3>Provider Status</h3>
+                        <div class="form-field">
+                            <label for="provider-status">Provider Status:</label>
+                            <select id="provider-status" required>
+                                <option value="" selected disabled>-- Select Provider Status --</option>
+                                <option value="internal">Internal Endeavor Health Provider</option>
+                                <option value="external-affiliated">External Affiliated Provider</option>
+                                <option value="external-non-affiliated">External Non-Affiliated Provider</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-field provider-internal-only hidden">
+                            <label for="show-on-website">Show on Endeavor Website:</label>
+                            <input type="checkbox" id="show-on-website">
+                        </div>
+                        
+                        <div class="form-field provider-internal-only hidden">
+                            <label for="employment-type">Employment Type:</label>
+                            <select id="employment-type">
+                                <option value="full-time">Full-time Employee</option>
+                                <option value="part-time">Part-time Employee</option>
+                                <option value="contractor">Contractor</option>
+                                <option value="affiliated">Affiliated Independent Practice</option>
+                                <option value="medical-staff">Medical Staff</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Basic Identification -->
+                    <div class="form-section" id="basic-identification">
+                        <h3>1. Basic Identification</h3>
+                        <div class="form-field">
+                            <label for="first-name">First Name:</label>
+                            <input type="text" id="first-name" required>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="last-name">Last Name:</label>
+                            <input type="text" id="last-name" required>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="npi">Provider NPI Number:</label>
+                            <input type="text" id="npi" pattern="[0-9]{10}" required>
+                            <span class="hint">10-digit National Provider Identifier</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="credentials">Credentials:</label>
+                            <select id="credentials" multiple required>
+                                <option value="md">MD</option>
+                                <option value="do">DO</option>
+                                <option value="phd">PhD</option>
+                                <option value="psyd">PsyD</option>
+                                <option value="lcsw">LCSW</option>
+                                <option value="lcpc">LCPC</option>
+                                <option value="aprn">APRN</option>
+                                <!-- Additional credentials would be listed here -->
+                            </select>
+                            <span class="hint">Hold Ctrl/Cmd to select multiple</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="account-name">Account Name:</label>
+                            <input type="text" id="account-name" required>
+                            <span class="hint">Medical group or institution name</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Professional Information -->
+                    <div class="form-section" id="professional-information">
+                        <h3>2. Professional Information</h3>
+                        <div class="form-field">
+                            <label for="title">Title:</label>
+                            <select id="title" required>
+                                <option value="" selected disabled>-- Select Title --</option>
+                                <option value="psychiatrist">Psychiatrist</option>
+                                <option value="psychologist">Psychologist</option>
+                                <option value="therapist">Therapist</option>
+                                <option value="physician">Physician</option>
+                                <option value="np">Nurse Practitioner</option>
+                                <option value="pa">Physician Assistant</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="license">License:</label>
+                            <input type="text" id="license" required>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="years-practice">Years in Practice:</label>
+                            <select id="years-practice" required>
+                                <option value="under-5">Under 5 years</option>
+                                <option value="5-10">5-10 years</option>
+                                <option value="10-15">10-15 years</option>
+                                <option value="15-20">15-20 years</option>
+                                <option value="over-20">Over 20 years</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-field provider-internal-only hidden">
+                            <label for="professional-titles">Professional Titles:</label>
+                            <input type="text" id="professional-titles">
+                            <span class="hint">e.g., Clinical Director, Chief of Psychiatry</span>
+                        </div>
+                        
+                        <div class="form-field provider-internal-only hidden">
+                            <label for="hospital-affiliation">Hospital Affiliation:</label>
+                            <select id="hospital-affiliation" multiple>
+                                <option value="linden-oaks">Linden Oaks Hospital</option>
+                                <option value="swedish">Swedish Hospital</option>
+                                <option value="evanston">Evanston Hospital</option>
+                                <option value="glenbrook">Glenbrook Hospital</option>
+                                <option value="skokie">Skokie Hospital</option>
+                                <option value="nwch">Northwest Community Hospital</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Education & Training (Internal Only) -->
+                    <div class="form-section provider-internal-only hidden" id="education-training">
+                        <h3>3. Education & Training</h3>
+                        
+                        <!-- Medical Provider Education (conditional) -->
+                        <div class="medical-provider-only hidden">
+                            <div class="form-field">
+                                <label for="medical-school">Medical School:</label>
+                                <input type="text" id="medical-school">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="medical-school-year">Year Graduated:</label>
+                                <input type="number" id="medical-school-year" min="1950" max="2023">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="residency">Residency:</label>
+                                <input type="text" id="residency">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="residency-year">Residency Completion Year:</label>
+                                <input type="number" id="residency-year" min="1950" max="2023">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="fellowship">Fellowship:</label>
+                                <input type="text" id="fellowship">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="fellowship-year">Fellowship Completion Year:</label>
+                                <input type="number" id="fellowship-year" min="1950" max="2023">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="board-certifications">Board Certifications:</label>
+                                <input type="text" id="board-certifications">
+                            </div>
+                        </div>
+                        
+                        <!-- Therapist/Psychologist Education (conditional) -->
+                        <div class="therapist-provider-only hidden">
+                            <div class="form-field">
+                                <label for="therapist-education">Education:</label>
+                                <input type="text" id="therapist-education">
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="education-year">Year Graduated:</label>
+                                <input type="number" id="education-year" min="1950" max="2023">
+                            </div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label for="research-focus">Research Focus:</label>
+                            <textarea id="research-focus"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- More sections would be added here -->
+                    
+                    <div class="form-section" id="form-controls">
+                        <div class="form-buttons">
+                            <button type="button" id="prev-section">Previous</button>
+                            <button type="button" id="next-section">Next</button>
+                            <button type="submit" id="submit-form">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        
+        <section id="flow-diagram">
+            <h2>Form Flow Diagram</h2>
+            <div class="mermaid-container">
+                <pre class="mermaid">
+flowchart TD
+    Start([Start]) --> ProviderStatus{Provider Status?}
+    ProviderStatus -->|Internal| InternalFields[Show Internal Fields]
+    ProviderStatus -->|External| StandardFields[Show Standard Fields Only]
+    
+    InternalFields --> WebsiteDisplay{Show on Website?}
+    WebsiteDisplay -->|Yes| RequireMediaFields[Require Media Fields]
+    WebsiteDisplay -->|No| OptionalMediaFields[Media Fields Optional]
+    
+    InternalFields --> ProviderType{Provider Type?}
+    ProviderType -->|Psychiatrist/Physician| MedicalFields[Show Medical Education]
+    ProviderType -->|Therapist/Psychologist| TherapistFields[Show Therapist Education]
+    ProviderType -->|Other| NoEducation[No Specialized Education]
+    
+    StandardFields --> BasicInfo[Basic Identification]
+    RequireMediaFields --> BasicInfo
+    OptionalMediaFields --> BasicInfo
+    MedicalFields --> SpecialtySection[Clinical Specialties]
+    TherapistFields --> SpecialtySection
+    NoEducation --> SpecialtySection
+    
+    BasicInfo --> ProfessionalInfo[Professional Information]
+    ProfessionalInfo --> SpecialtySection
+    SpecialtySection --> ContactInfo[Contact Information]
+    ContactInfo --> AvailabilityInfo[Availability & Practice]
+    
+    AvailabilityInfo --> AvailabilityStatus{Status = Open/Limited?}
+    AvailabilityStatus -->|Yes| ShowSoonest[Show Soonest Availability]
+    AvailabilityStatus -->|No| HideSoonest[Hide Soonest Availability]
+    
+    ShowSoonest --> ReviewSubmit[Review & Submit]
+    HideSoonest --> ReviewSubmit
+    
+    ReviewSubmit --> End([End])
+                </pre>
+            </div>
+        </section>
+        
+        <section id="field-inventory">
+            <h2>Interactive Field Inventory</h2>
+            <div class="field-filter">
+                <label for="field-filter">Filter fields:</label>
+                <select id="field-filter">
+                    <option value="all">All Fields</option>
+                    <option value="required">Required Fields</option>
+                    <option value="internal">Internal Provider Fields</option>
+                    <option value="website">Website Display Fields</option>
+                    <option value="conditional">Conditional Fields</option>
+                </select>
+            </div>
+            
+            <div class="field-table-container">
+                <table id="field-inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Field Name</th>
+                            <th>Section</th>
+                            <th>Type</th>
+                            <th>Website</th>
+                            <th>Salesforce</th>
+                            <th>Pulse</th>
+                            <th>Required</th>
+                            <th>Internal Only</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- This will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section id="conditional-logic">
+            <h2>Conditional Logic Visualization</h2>
+            
+            <div class="tabs">
+                <button class="tab-button active" data-tab="provider-type">Provider Type Logic</button>
+                <button class="tab-button" data-tab="education">Education Fields Logic</button>
+                <button class="tab-button" data-tab="website">Website Display Logic</button>
+                <button class="tab-button" data-tab="availability">Availability Logic</button>
+            </div>
+            
+            <div class="tab-content">
+                <div class="tab-pane active" id="provider-type-tab">
+                    <h3>Provider Type Logic</h3>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    ProviderStatus[Provider Status Field] -->|Internal| InternalFields
+    ProviderStatus -->|External| StandardFields
+    
+    subgraph InternalFields[Internal Provider Fields]
+        direction TB
+        WebsiteCheckbox[Show on Website]
+        EmploymentType[Employment Type]
+        HospitalAffiliation[Hospital Affiliation]
+        MobilePhone[Mobile Phone]
+        MediaSection[Media & Personal]
+        EducationSection[Education & Training]
+    end
+    
+    subgraph StandardFields[Standard Fields - Always Visible]
+        direction TB
+        BasicID[Basic Identification]
+        CoreProfessional[Core Professional Info]
+        CoreClinical[Clinical Services]
+        CoreContact[Contact Information]
+        CoreAvailability[Availability]
+    end
+                        </pre>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="education-tab">
+                    <h3>Education Fields Logic</h3>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    ProviderStatus[Provider Status] -->|Internal| ShowEducation[Show Education Section]
+    ProviderStatus -->|External| HideEducation[Hide Education Section]
+    
+    ShowEducation --> ProviderTitle{Provider Title}
+    ProviderTitle -->|Psychiatrist/Physician| MedicalFields[Medical Education Fields]
+    ProviderTitle -->|Therapist/Psychologist| TherapistFields[Therapist Education Fields]
+    ProviderTitle -->|Other| NoSpecializedEducation[No Specialized Education]
+    
+    MedicalFields --> RequireMedical{Required Fields}
+    RequireMedical --> MedicalSchool[Medical School]
+    RequireMedical --> Residency[Residency]
+    MedicalFields --> OptionalMedical{Optional Fields}
+    OptionalMedical --> Fellowship[Fellowship]
+    OptionalMedical --> BoardCert[Board Certifications]
+    
+    TherapistFields --> RequireTherapist{Required Fields}
+    RequireTherapist --> TherapistEducation[Education Institution]
+    RequireTherapist --> GraduationYear[Graduation Year]
+                        </pre>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="website-tab">
+                    <h3>Website Display Logic</h3>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    ProviderStatus{Provider Status?} -->|Internal| InternalCheck[Show Website Options]
+    ProviderStatus -->|External| HideWebsite[Hide Website Options]
+    
+    InternalCheck --> WebsiteOpt{Show on Website?}
+    WebsiteOpt -->|Yes| RequiredFields[Required Website Fields]
+    WebsiteOpt -->|No| OptionalFields[Optional Fields]
+    
+    RequiredFields --> Headshot[Headshot]
+    RequiredFields --> Bio[Bio]
+    RequiredFields --> Philosophy[Philosophy of Care]
+    RequiredFields --> Statement[Endeavor Statement]
+    
+    OptionalFields --> OptHeadshot[Headshot (optional)]
+    OptionalFields --> OptBio[Bio (optional)]
+    OptionalFields --> OptPhilosophy[Philosophy (optional)]
+    OptionalFields --> OptStatement[Endeavor Statement (optional)]
+                        </pre>
+                    </div>
+                </div>
+                
+                <div class="tab-pane" id="availability-tab">
+                    <h3>Availability Logic</h3>
+                    <div class="mermaid-container">
+                        <pre class="mermaid">
+flowchart TD
+    AvailabilityStatus{Availability Status?} -->|Open or Limited| ShowSoonest[Show Soonest Availability Field]
+    AvailabilityStatus -->|Closed| HideSoonest[Hide Soonest Availability Field]
+    
+    ShowSoonest --> RequireSoonest[Require Soonest Field]
+    HideSoonest --> NoSoonest[No Soonest Field]
+    
+    subgraph AlwaysShow[Always Visible Availability Fields]
+        EveningHours[Evening Hours]
+        WeekendHours[Weekend Hours]
+        DeliveryMode[Service Delivery Mode]
+        Location[Location]
+    end
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Endeavor Health Provider Form Integration Project</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
